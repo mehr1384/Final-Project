@@ -14,69 +14,48 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 import java.util.regex.Pattern;
-
-
 public class SignUp implements Initializable {
-
     private int randomNumber;
     @FXML
     private Button btnSignUp;
-
     @FXML
     private Label lblCaptcha;
-
     @FXML
     private Label lblCreateAccount;
-
     @FXML
     private Label lblRandom;
     @FXML
     private Label lblErrorCaptcha;
-
     @FXML
     private Label lblErrorEmail;
-
     @FXML
     private Label lblErrorFirstName;
-
     @FXML
     private Label lblErrorLastName;
-
     @FXML
     private Label lblErrorPassword;
-
     @FXML
     private Label lblErrorPhoneNumber;
-
     @FXML
     private Label lblErrorRePassword;
-
     @FXML
     private Label lblErrorUsername;
     @FXML
     private TextField textCaptchaCode;
-
     @FXML
     private TextField textEmail;
-
     @FXML
     private TextField textFirstName;
-
     @FXML
     private TextField textLastName;
-
     @FXML
     private PasswordField textPassword;
-
     @FXML
     private TextField textPhoneNumber;
-
     @FXML
     private PasswordField textRePassword;
-
     @FXML
     private TextField textUsername;
-
     @FXML
     void SignUp(ActionEvent event) throws IOException {
         TextFieldCaptchaCode(event);
@@ -103,7 +82,6 @@ public class SignUp implements Initializable {
             stage.setTitle("Hello!");
             stage.setScene(scene);
             stage.show();
-
         }
     }
     @FXML
@@ -116,7 +94,6 @@ public class SignUp implements Initializable {
             return true;
         }
     }
-
     @FXML
     boolean TextFieldEmail(ActionEvent event) {
         String regex = "^[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.com$";
@@ -127,7 +104,6 @@ public class SignUp implements Initializable {
             lblErrorEmail.setText("Email is incorrect.");
             return false;}
     }
-
     @FXML
     boolean TextFieldFirstName(ActionEvent event) {
         String regex = "^[a-zA-Z]{1,18}$";
@@ -139,7 +115,6 @@ public class SignUp implements Initializable {
             return false;
         }
     }
-
     @FXML
     boolean TextFieldLastName(ActionEvent event) {
         String regex = "^[a-zA-Z]{1,18}$";
@@ -196,7 +171,6 @@ public class SignUp implements Initializable {
             return false;
         }
     }
-
     @Override
     public void initialize(URL url, java.util.ResourceBundle resourceBundle) {
         Random random = new Random();
