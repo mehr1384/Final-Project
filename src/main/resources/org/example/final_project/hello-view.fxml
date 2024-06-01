@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="506.0" prefWidth="680.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.final_project.logIn">
+    <children>
+        <Label layoutX="250.0" layoutY="45.0" prefHeight="65.0" prefWidth="160.0" text="  Login" textFill="#efeeee">
+            <font>
+                <Font name="System Italic" size="46.0" />
+            </font>
+        </Label>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#48ff1f" height="5.0" layoutX="225.0" layoutY="119.0" stroke="BLACK" strokeType="INSIDE" width="211.0" />
+        <PasswordField fx:id="password" layoutX="175.0" layoutY="226.0" onAction="#validatePassword" prefHeight="26.0" prefWidth="342.0" promptText="Password" />
+        <ImageView fitHeight="45.0" fitWidth="61.0" layoutX="113.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../imed/images.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="45.0" fitWidth="29.0" layoutX="121.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../imed/images1.png" />
+            </image>
+        </ImageView>
+        <Label layoutX="264.0" layoutY="274.0" prefHeight="38.0" prefWidth="190.0" text="Enter CAPTCHA Code:" textFill="#eae0e0">
+            <font>
+                <Font name="System Bold Italic" size="13.0" />
+            </font>
+        </Label>
+        <TextField fx:id="username" layoutX="175.0" layoutY="168.0" onAction="#validateUsername" prefHeight="26.0" prefWidth="342.0" promptText="Username" />
+        <TextField fx:id="captcha" layoutX="359.0" layoutY="311.0" onAction="#validateCaptcha" prefHeight="26.0" prefWidth="115.0" promptText="Code" />
+        <Button fx:id="btnLogIn" layoutX="191.0" layoutY="365.0" mnemonicParsing="false" onAction="#checkAllValidate" prefHeight="38.0" prefWidth="262.0" style="-fx-background-radius: 69; -fx-background-color: #48ff1f;" text="Login" textFill="#fcfbfb">
+            <font>
+                <Font name="System Bold Italic" size="20.0" />
+            </font>
+        </Button>
+        <Label layoutX="65.0" layoutY="438.0" prefHeight="18.0" prefWidth="98.0" text="Not a member?" textAlignment="CENTER" textFill="#fcfbfb">
+            <font>
+                <Font name="System Italic" size="14.0" />
+            </font>
+        </Label>
+        <Button fx:id="btnSignUp" layoutX="212.0" layoutY="435.0" mnemonicParsing="false" onAction="#SignUp" prefHeight="26.0" prefWidth="138.0" style="-fx-background-radius: 100; -fx-background-color: #fa309f;" text="Sign up" textFill="#f7f5f5">
+            <font>
+                <Font name="System Bold Italic" size="13.0" />
+            </font>
+        </Button>
+        <Button fx:id="btnForgotPassword" layoutX="372.0" layoutY="435.0" mnemonicParsing="false" onAction="#forgotPassword" prefHeight="26.0" prefWidth="168.0" style="-fx-background-radius: 50; -fx-background-color: #999292;" text="Forgot Password" textFill="#e7e3e3">
+            <font>
+                <Font name="System Bold Italic" size="13.0" />
+            </font>
+        </Button>
+        <Label fx:id="lblRandom" alignment="CENTER" contentDisplay="CENTER" layoutX="196.0" layoutY="311.0" prefHeight="26.0" prefWidth="108.0" style="-fx-background-color: #f7f6f6; -fx-background-radius: 25;" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold Italic" size="15.0" />
+            </font>
+        </Label>
+        <Label fx:id="usernameError" layoutX="177.0" layoutY="199.0" prefHeight="18.0" prefWidth="342.0" textFill="#f70505" />
+        <Label fx:id="passError" layoutX="175.0" layoutY="254.0" prefHeight="18.0" prefWidth="342.0" textFill="#fc0101" />
+        <Label fx:id="captchaError" layoutX="282.0" layoutY="337.0" prefHeight="18.0" prefWidth="115.0" textFill="#f70808" />
+    </children>
+</AnchorPane>
