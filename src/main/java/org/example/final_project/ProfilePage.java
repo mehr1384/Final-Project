@@ -190,10 +190,14 @@ public class ProfilePage {
             return false;
         }
     }
-
     @FXML
-    void Wallet(ActionEvent event) {
-
+    void Wallet(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnWallet.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("WalletPage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Wallet Page");
+        stage.setScene(scene);
+        stage.show();
     }
 
     public Button getBtnEdit() {

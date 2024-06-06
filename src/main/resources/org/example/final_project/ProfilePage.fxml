@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="546.0" prefWidth="714.0" style="-fx-background-color: #9320f7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.final_project.ProfilePage">
    <children>
-      <AnchorPane layoutX="35.0" layoutY="37.0" prefHeight="494.0" prefWidth="644.0" style="-fx-background-color: #ffffff; -fx-background-radius: 25;">
+      <AnchorPane layoutX="35.0" layoutY="25.0" prefHeight="494.0" prefWidth="644.0" style="-fx-background-color: #ffffff; -fx-background-radius: 25;">
          <children>
             <Label layoutX="310.0" layoutY="60.0" prefHeight="40.0" prefWidth="291.0" style="-fx-background-color: #9e4fff81; -fx-background-radius: 15;" text="  Username  :">
                <font>
