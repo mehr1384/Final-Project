@@ -59,7 +59,7 @@ public class ForgotPassword {
 //        String userEmail = textEmail.getText();
 //
 //        // فرض کنید کاربر ایمیل و کلمه عبور خود را از طریق ورودی‌ها گرفته و به تابع sendEmail ارسال می‌کند
-//        String username = "faeze.saghi13484@yahoo.com";
+//        String username = "@yahoo.com";
 //        String password = "";
 //
 //        EmailSender.sendEmail(userEmail, code, username, password);

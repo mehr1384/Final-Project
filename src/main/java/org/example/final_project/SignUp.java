@@ -66,20 +66,26 @@ public class SignUp implements Initializable {
         TextFieldRePassword(event);
         TextFieldPhoneNumber(event);
         TextFieldUsername(event);
-        if(
-        TextFieldCaptchaCode(event)&&
-        TextFieldEmail(event)&&
-        TextFieldFirstName(event)&&
-        TextFieldLastName(event)&&
-        TextFieldPassword(event)&&
-        TextFieldRePassword(event)&&
-        TextFieldPhoneNumber(event)&&
-        TextFieldUsername(event)){
-            Stage stage =(Stage) btnSignUp.getScene().getWindow();
+
+        if (TextFieldCaptchaCode(event) && TextFieldEmail(event) && TextFieldFirstName(event) &&
+                TextFieldLastName(event) && TextFieldPassword(event) && TextFieldRePassword(event) &&
+                TextFieldPhoneNumber(event) && TextFieldUsername(event)) {
+
+            // ذخیره اطلاعات در کلاس UserProfile
+            UserProfile userProfile = UserProfile.getInstance();
+            userProfile.setEmail(textEmail.getText());
+            userProfile.setFirstName(textFirstName.getText());
+            userProfile.setLastName(textLastName.getText());
+            userProfile.setPassword(textPassword.getText());
+            userProfile.setPhone(textPhoneNumber.getText());
+            userProfile.setUsername(textUsername.getText());
+
+            // تغییر صفحه به HomePage
+            Stage stage = (Stage) btnSignUp.getScene().getWindow();
             stage.close();
             FXMLLoader fxmlLoader = new FXMLLoader(HomePage.class.getResource("HomePage.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
-            stage.setTitle("Hello!");
+            stage.setTitle("Home Page");
             stage.setScene(scene);
             stage.show();
         }

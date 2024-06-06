@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="546.0" prefWidth="714.0" style="-fx-background-color: #9320f7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.final_project.ProfilePage">
+   <children>
+      <AnchorPane layoutX="35.0" layoutY="37.0" prefHeight="494.0" prefWidth="644.0" style="-fx-background-color: #ffffff; -fx-background-radius: 25;">
+         <children>
+            <Label layoutX="310.0" layoutY="60.0" prefHeight="40.0" prefWidth="291.0" style="-fx-background-color: #9e4fff81; -fx-background-radius: 15;" text="  Username  :">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <Label layoutX="310.0" layoutY="310.0" prefHeight="40.0" prefWidth="291.0" style="-fx-background-color: #9e4fff81; -fx-background-radius: 15;" text="  Email :">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <TextField fx:id="textEmail" layoutX="396.0" layoutY="317.0" onAction="#TextFieldEmail" prefHeight="26.0" prefWidth="198.0" style="-fx-background-color: #9e4fff81; -fx-background-radius: 15;" />
+            <Label layoutX="310.0" layoutY="110.0" prefHeight="40.0" prefWidth="291.0" style="-fx-background-color: #9e4fff81; -fx-background-radius: 15;" text="  First name  :">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <Label layoutX="310.0" layoutY="210.0" prefHeight="40.0" prefWidth="291.0" style="-fx-background-color: #9e4fff81; -fx-background-radius: 15;" text="  Password  :">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <Label layoutX="310.0" layoutY="160.0" prefHeight="40.0" prefWidth="291.0" style="-fx-background-color: #9e4fff81; -fx-background-radius: 15;" text="  Last name  :">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <Label layoutX="310.0" layoutY="260.0" prefHeight="40.0" prefWidth="291.0" style="-fx-background-color: #9e4fff81; -fx-background-radius: 15;" text="  Phone  :">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <TextField fx:id="textPassword" layoutX="396.0" layoutY="217.0" onAction="#TextFieldPassword" prefHeight="26.0" prefWidth="198.0" style="-fx-background-color: #9e4fff81; -fx-background-radius: 15;">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></TextField>
+            <TextField fx:id="textPhone" layoutX="396.0" layoutY="267.0" onAction="#TextFieldPhone" prefHeight="26.0" prefWidth="198.0" style="-fx-background-color: #9e4fff81; -fx-background-radius: 15;">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></TextField>
+            <TextField fx:id="textLastName" layoutX="396.0" layoutY="167.0" onAction="#TextFieldLastName" prefHeight="26.0" prefWidth="198.0" style="-fx-background-color: #9e4fff81; -fx-background-radius: 15;">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></TextField>
+            <TextField fx:id="textFirstName" layoutX="396.0" layoutY="117.0" onAction="#TextFieldFirstName" prefHeight="26.0" prefWidth="198.0" style="-fx-background-color: #9e4fff81; -fx-background-radius: 15;">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></TextField>
+            <Label fx:id="lblUsername" layoutX="396.0" layoutY="67.0" prefHeight="26.0" prefWidth="198.0" style="-fx-background-color: #9e4fff81; -fx-background-radius: 15;">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Label>
+            <AnchorPane layoutX="34.0" layoutY="35.0" prefHeight="429.0" prefWidth="248.0" style="-fx-background-color: #9e4fff81; -fx-background-radius: 15;">
+               <children>
+                  <ImageView fx:id="pictureView" fitHeight="150.0" fitWidth="176.0" layoutX="49.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../imed/images.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btnPicture" layoutX="35.0" layoutY="338.0" mnemonicParsing="false" onAction="#Picture" prefHeight="30.0" prefWidth="164.0" style="-fx-background-color: #9320f7; -fx-background-radius: 15;" text="Select  picture" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="15.0" />
+                     </font></Button>
+                  <Label fx:id="lblName" alignment="CENTER" layoutX="45.0" layoutY="183.0" prefHeight="40.0" prefWidth="157.0">
+                     <font>
+                        <Font name="System Bold Italic" size="17.0" />
+                     </font></Label>
+                  <Label fx:id="lblEmail" alignment="CENTER" layoutX="7.0" layoutY="223.0" prefHeight="40.0" prefWidth="242.0">
+                     <font>
+                        <Font name="System Bold Italic" size="17.0" />
+                     </font></Label>
+                  <Label fx:id="lblPhone" alignment="CENTER" layoutX="8.0" layoutY="269.0" prefHeight="40.0" prefWidth="242.0">
+                     <font>
+                        <Font name="System Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnEdit" layoutX="33.0" layoutY="378.0" mnemonicParsing="false" onAction="#EditProfile" prefHeight="30.0" prefWidth="164.0" style="-fx-background-radius: 15; -fx-background-color: #9320f7;" text="Edit Profile" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <Button fx:id="btnHistory" layoutX="456.0" layoutY="416.0" mnemonicParsing="false" onAction="#History" prefHeight="30.0" prefWidth="115.0" style="-fx-background-radius: 15; -fx-background-color: #9320f7;" text="History" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font></Button>
+            <Button fx:id="btnWallet" layoutX="328.0" layoutY="416.0" mnemonicParsing="false" onAction="#Wallet" prefHeight="30.0" prefWidth="115.0" style="-fx-background-radius: 15; -fx-background-color: #9320f7;" text="Wallet" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font></Button>
+            <Button fx:id="btnHomePage" layoutX="326.0" layoutY="371.0" mnemonicParsing="false" onAction="#HomePage" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #9320f7; -fx-background-radius: 15;" text="Home Page" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

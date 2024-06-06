@@ -16,7 +16,7 @@
                 <TableColumn fx:id="TableMin" minWidth="5.5999755859375" prefWidth="120.0" text="Min Price" />
             </columns>
         </TableView>
-      <Button layoutX="571.0" layoutY="500.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="142.8" style="-fx-background-radius: 0;" text="Button" />
+      <Button fx:id="btnProfile" layoutX="571.0" layoutY="500.0" mnemonicParsing="false" onAction="#ProfilePage" prefHeight="45.0" prefWidth="142.8" style="-fx-background-radius: 0;" text="Profile" />
       <Button layoutX="428.0" layoutY="500.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="142.8" style="-fx-background-radius: 0;" text="Button" />
       <Button layoutX="285.0" layoutY="500.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="142.8" style="-fx-background-radius: 0;" text="Button" />
       <Button layoutX="143.0" layoutY="500.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="142.8" style="-fx-background-radius: 0;" text="Button" />

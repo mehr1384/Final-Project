@@ -4,10 +4,12 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -39,6 +41,19 @@ public class HomePage implements Initializable {
 
     @FXML
     public TableColumn<Table, Double> TablePrice;
+    @FXML
+    private Button btnProfile;
+
+    @FXML
+    void ProfilePage(ActionEvent event) throws IOException {
+        Stage stage =(Stage) btnProfile.getScene().getWindow();
+        stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(ProfilePage.class.getResource("ProfilePage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Profile");
+        stage.setScene(scene);
+        stage.show();
+    }
     private double[] price = new double[]{5,22};
 
 
