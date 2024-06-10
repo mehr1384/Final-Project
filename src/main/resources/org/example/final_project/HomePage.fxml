@@ -5,21 +5,21 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="546.0" prefWidth="714.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.final_project.HomePage">
+<AnchorPane prefHeight="546.0" prefWidth="714.0" style="-fx-background-color: #3c098fbd;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.final_project.HomePage">
     <children>
-        <TableView fx:id="TableView" prefHeight="500.0" prefWidth="714.0">
+        <TableView fx:id="TableView" layoutX="29.0" layoutY="25.0" prefHeight="455.0" prefWidth="656.0">
             <columns>
-                <TableColumn fx:id="TableMarket" prefWidth="200.0" text="Market" />
-                <TableColumn fx:id="TablePrice" prefWidth="130.0" text="Price" />
-                <TableColumn fx:id="TableConversion" prefWidth="130.0" text="Conversion" />
-                <TableColumn fx:id="TableMax" minWidth="5.5999755859375" prefWidth="130.0" text="Max Price" />
-                <TableColumn fx:id="TableMin" minWidth="5.5999755859375" prefWidth="120.0" text="Min Price" />
+                <TableColumn fx:id="TableMarket" prefWidth="150.0" text="Market" />
+                <TableColumn fx:id="TablePrice" prefWidth="125.0" text="Price" />
+                <TableColumn fx:id="TableConversion" prefWidth="125.0" text="Conversion" />
+                <TableColumn fx:id="TableMax" minWidth="5.5999755859375" prefWidth="125.0" text="Max Price" />
+                <TableColumn fx:id="TableMin" minWidth="5.5999755859375" prefWidth="126.39996337890625" text="Min Price" />
             </columns>
         </TableView>
-      <Button fx:id="btnProfile" layoutX="571.0" layoutY="500.0" mnemonicParsing="false" onAction="#ProfilePage" prefHeight="45.0" prefWidth="142.8" style="-fx-background-radius: 0;" text="Profile" />
-      <Button layoutX="428.0" layoutY="500.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="142.8" style="-fx-background-radius: 0;" text="Button" />
-      <Button layoutX="285.0" layoutY="500.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="142.8" style="-fx-background-radius: 0;" text="Button" />
-      <Button layoutX="143.0" layoutY="500.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="142.8" style="-fx-background-radius: 0;" text="Button" />
-      <Button layoutY="500.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="142.8" style="-fx-background-radius: 0;" text="Button" />
+      <Button fx:id="btnProfile" layoutX="555.0" layoutY="479.0" mnemonicParsing="false" onAction="#ProfilePage" prefHeight="46.0" prefWidth="129.0" style="-fx-background-radius: 0;" text="Profile" />
+      <Button layoutX="423.0" layoutY="480.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="132.0" style="-fx-background-radius: 0;" text="Button" />
+      <Button layoutX="290.0" layoutY="480.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="132.8" style="-fx-background-radius: 0;" text="Button" />
+      <Button layoutX="157.0" layoutY="480.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="132.8" style="-fx-background-radius: 0;" text="Button" />
+      <Button layoutX="29.0" layoutY="480.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="132.8" style="-fx-background-radius: 0;" text="Button" />
     </children>
 </AnchorPane>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="546.0" prefWidth="714.0" style="-fx-background-color: #3da7c1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.final_project.SwapPage">
+   <children>
+      <AnchorPane layoutX="35.0" layoutY="26.0" prefHeight="494.0" prefWidth="644.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15;">
+         <children>
+            <Button fx:id="btnSwap" layoutX="178.0" layoutY="341.0" mnemonicParsing="false" onAction="#Swap" prefHeight="47.0" prefWidth="302.0" style="-fx-background-color: #3da7c1; -fx-background-radius: 15;" text="Swap" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="22.0" />
+               </font>
+            </Button>
+            <Label layoutX="64.0" layoutY="66.0" prefHeight="94.0" prefWidth="515.0" style="-fx-background-color: #3ca5bd54; -fx-background-radius: 15;" text="Label" textFill="#3ca5bd00" />
+            <TextField alignment="CENTER" layoutX="300.0" layoutY="76.0" prefHeight="74.0" prefWidth="278.0" style="-fx-background-radius: 15; -fx-background-color: #3ca5bd00;" text="0.0">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </TextField>
+            <Label layoutX="64.0" layoutY="200.0" prefHeight="94.0" prefWidth="515.0" style="-fx-background-color: #3ca5bd54; -fx-background-radius: 15;" text="Label" textFill="#3ca5bd00" />
+            <TextField alignment="CENTER" layoutX="300.0" layoutY="210.0" prefHeight="74.0" prefWidth="278.0" style="-fx-background-radius: 15; -fx-background-color: #3ca5bd00;" text="0.0">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </TextField>
+            <ImageView fx:id="lblSwapBitcoin" fitHeight="67.0" fitWidth="68.0" layoutX="73.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../imed/۲۰۲۴۰۶۰۷_۲۰۴۹۰۰.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="lblChangeToBitcoin" fitHeight="67.0" fitWidth="68.0" layoutX="73.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../imed/۲۰۲۴۰۶۰۷_۲۰۴۹۰۰.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lblSwap" layoutX="152.0" layoutY="35.0" text="Bitcoin">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="ChoiceBoxSwap" layoutX="143.0" layoutY="91.0" prefHeight="38.0" prefWidth="112.0" style="-fx-background-color: #3ca5bd00;" />
+            <Label fx:id="lblChangeTo" layoutX="152.0" layoutY="232.0" text="Bitcoin">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="ChoiceBoxChangeTo" layoutX="219.0" layoutY="234.0" prefHeight="26.0" prefWidth="36.0" style="-fx-background-color: #3ca5bd00;" />
+            <Button fx:id="btnToken" layoutX="236.0" layoutY="424.0" mnemonicParsing="false" onAction="#TokenPage" prefHeight="38.0" prefWidth="173.0" style="-fx-background-radius: 15; -fx-background-color: #3da7c1;" text="Token" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnProfile" layoutX="436.0" layoutY="424.0" mnemonicParsing="false" onAction="#ProfilePage" prefHeight="38.0" prefWidth="173.0" style="-fx-background-radius: 15; -fx-background-color: #3da7c1;" text="Profile" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnHomePage" layoutX="36.0" layoutY="424.0" mnemonicParsing="false" onAction="#HomePage" prefHeight="38.0" prefWidth="173.0" style="-fx-background-radius: 15; -fx-background-color: #3da7c1;" text="Home" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="98.0" layoutY="303.0" text="Refrence Price" textFill="#0000009c">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="399.0" layoutY="300.0" text=" 1 Bitcoin  =">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="480.0" layoutY="300.0" text="411.255 Tether">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="30.0" fitWidth="66.0" layoutX="281.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../imed/switch-icon-on-white-background-flat-style-exchange-icon-for-your-web-site-design-logo-app-ui-transfer-symbol-convert-sign-vector-۱.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="lblSwapTether" disable="true" fitHeight="74.0" fitWidth="85.0" layoutX="70.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../imed/Picsart_24-06-07_20-52-15-774%20-%20Copy.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="lblChangeToTether" disable="true" fitHeight="74.0" fitWidth="85.0" layoutX="70.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../imed/Picsart_24-06-07_20-52-15-774%20-%20Copy.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

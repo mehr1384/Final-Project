@@ -1,10 +1,17 @@
 package org.example.final_project;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.stage.Stage;
 import javafx.util.Pair;
 
 import java.io.BufferedReader;
@@ -21,16 +28,32 @@ import java.util.ResourceBundle;
 public class WalletPage implements Initializable {
 
     @FXML
+    private Button btnHomePage;
+
+    @FXML
+    private Button btnProfile;
+
+
+    @FXML
     private LineChart<Number, Number> currencyLineChart;
+    @FXML
+    private ChoiceBox<String> currencyChoiceBox;
+    private String[] currency = {"USD","EUR","TOMAN","YEN","GBP"};
+
 
     @FXML
     private NumberAxis xAxis;
 
     @FXML
     private NumberAxis yAxis;
+    @FXML
+    private Label lblCurrency;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        currencyChoiceBox.getItems().addAll(currency);
+        currencyChoiceBox.setOnAction(this::getCurrency);
         // تنظیمات اولیه برای محورهای نمودار
         xAxis.setLabel("Time");
         yAxis.setLabel("Value");
@@ -41,22 +64,17 @@ public class WalletPage implements Initializable {
         // خواندن داده‌ها از فایل CSV و به روز رسانی نمودار
         updateChartFromCSV(csvFilePath);
     }
+    public void getCurrency(ActionEvent event){
+        String currency = currencyChoiceBox.getValue();
+        lblCurrency.setText(currency);
 
-    public void updateChart(List<Pair<Number, Number>> newData) {
-        XYChart.Series<Number, Number> series = new XYChart.Series<>();
-        series.setName("Updated Currency Value");
-
-        for (Pair<Number, Number> dataPoint : newData) {
-            series.getData().add(new XYChart.Data<>(dataPoint.getKey(), dataPoint.getValue()));
-        }
-
-        currencyLineChart.getData().clear(); // پاک کردن داده‌های قبلی
-        currencyLineChart.getData().add(series); // اضافه کردن داده‌های جدید
     }
-
     public void updateChartFromCSV(String filePath) {
         List<Pair<Number, Number>> newData = new ArrayList<>();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS");
+
+        XYChart.Series<Number, Number> series = new XYChart.Series<>();
+        series.setName("Updated Currency Value");
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -85,6 +103,32 @@ public class WalletPage implements Initializable {
             e.printStackTrace();
         }
 
-        updateChart(newData);
+        for (Pair<Number, Number> dataPoint : newData) {
+            series.getData().add(new XYChart.Data<>(dataPoint.getKey(), dataPoint.getValue()));
+        }
+
+        currencyLineChart.getData().clear(); // پاک کردن داده‌های قبلی
+        currencyLineChart.getData().add(series); // اضافه کردن داده‌های جدید
+    }
+    @FXML
+    void HomePage(ActionEvent event) throws IOException {
+        Stage stage =(Stage) btnHomePage.getScene().getWindow();
+        stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(HomePage.class.getResource("HomePage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Home Page!");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void Profile(ActionEvent event) throws IOException {
+        Stage stage =(Stage) btnProfile.getScene().getWindow();
+        stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(ProfilePage.class.getResource("ProfilePage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Profile");
+        stage.setScene(scene);
+        stage.show();
     }
 }

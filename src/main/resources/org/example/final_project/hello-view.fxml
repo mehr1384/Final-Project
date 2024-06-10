@@ -19,8 +19,11 @@
         </Label>
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#48ff1f" height="5.0" layoutX="225.0" layoutY="119.0" stroke="BLACK" strokeType="INSIDE" width="211.0" />
         <PasswordField fx:id="password" layoutX="175.0" layoutY="226.0" onAction="#validatePassword" prefHeight="26.0" prefWidth="342.0" promptText="Password" />
-        <ImageView fitHeight="45.0" fitWidth="61.0" layoutX="113.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true" />
-        <ImageView fitHeight="45.0" fitWidth="29.0" layoutX="121.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="29.0" fitWidth="29.0" layoutX="128.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../imed/Picsart_24-06-07_20-46-13-303.png" />
+         </image></ImageView>
+        <ImageView fitHeight="45.0" fitWidth="29.0" layoutX="128.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../../../imed/7.png" />
             </image>
