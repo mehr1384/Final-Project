@@ -66,12 +66,10 @@ public class WalletPage implements Initializable {
     }
     public void getCurrency(ActionEvent event){
         String currency = currencyChoiceBox.getValue();
-        lblCurrency.setText(currency);
-
     }
     public void updateChartFromCSV(String filePath) {
         List<Pair<Number, Number>> newData = new ArrayList<>();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
 
         XYChart.Series<Number, Number> series = new XYChart.Series<>();
         series.setName("Updated Currency Value");

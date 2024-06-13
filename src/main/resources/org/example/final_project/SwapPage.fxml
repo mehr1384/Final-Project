@@ -30,28 +30,8 @@
                   <Font size="32.0" />
                </font>
             </TextField>
-            <ImageView fx:id="lblSwapBitcoin" fitHeight="67.0" fitWidth="68.0" layoutX="73.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" visible="false">
-               <image>
-                  <Image url="@../../../imed/۲۰۲۴۰۶۰۷_۲۰۴۹۰۰.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="lblChangeToBitcoin" fitHeight="67.0" fitWidth="68.0" layoutX="73.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true" visible="false">
-               <image>
-                  <Image url="@../../../imed/۲۰۲۴۰۶۰۷_۲۰۴۹۰۰.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="lblSwap" layoutX="152.0" layoutY="35.0" text="Bitcoin">
-               <font>
-                  <Font name="System Bold Italic" size="20.0" />
-               </font>
-            </Label>
-            <ChoiceBox fx:id="ChoiceBoxSwap" layoutX="143.0" layoutY="91.0" prefHeight="38.0" prefWidth="112.0" style="-fx-background-color: #3ca5bd00;" />
-            <Label fx:id="lblChangeTo" layoutX="152.0" layoutY="232.0" text="Bitcoin">
-               <font>
-                  <Font name="System Bold Italic" size="20.0" />
-               </font>
-            </Label>
-            <ChoiceBox fx:id="ChoiceBoxChangeTo" layoutX="219.0" layoutY="234.0" prefHeight="26.0" prefWidth="36.0" style="-fx-background-color: #3ca5bd00;" />
+            <ChoiceBox fx:id="ChoiceBoxSwap" layoutX="138.0" layoutY="80.0" prefHeight="66.0" prefWidth="85.0" style="-fx-background-color: #3ca5bd00;" stylesheets="@../../../styles/style.css" />
+            <ChoiceBox fx:id="ChoiceBoxChangeTo" layoutX="141.0" layoutY="213.0" prefHeight="60.0" prefWidth="86.0" style="-fx-background-color: #3ca5bd00;" />
             <Button fx:id="btnToken" layoutX="236.0" layoutY="424.0" mnemonicParsing="false" onAction="#TokenPage" prefHeight="38.0" prefWidth="173.0" style="-fx-background-radius: 15; -fx-background-color: #3da7c1;" text="Token" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
@@ -85,16 +65,6 @@
             <ImageView fitHeight="30.0" fitWidth="66.0" layoutX="281.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../imed/switch-icon-on-white-background-flat-style-exchange-icon-for-your-web-site-design-logo-app-ui-transfer-symbol-convert-sign-vector-۱.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="lblSwapTether" disable="true" fitHeight="74.0" fitWidth="85.0" layoutX="70.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../imed/Picsart_24-06-07_20-52-15-774%20-%20Copy.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="lblChangeToTether" disable="true" fitHeight="74.0" fitWidth="85.0" layoutX="70.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../imed/Picsart_24-06-07_20-52-15-774%20-%20Copy.png" />
                </image>
             </ImageView>
          </children>

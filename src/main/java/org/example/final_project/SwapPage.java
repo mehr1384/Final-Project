@@ -36,21 +36,21 @@ public class SwapPage implements Initializable {
 
     @FXML
     private Label lblSwap;
-    private String[] Swap = {"Bitcoin", "Litecoin", "Tether", "BAT", "Etherum", "Cardano"};
-    private String[] ChangeTo = {"Bitcoin", "Litecoin", "Tether", "BAT", "Etherum", "Cardano"};
+    private String[] Swap = {"USD","EUR","TOMAN","YEN","GBP"};
+    private String[] ChangeTo ={"USD","EUR","TOMAN","YEN","GBP"};
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ChoiceBoxChangeTo.getItems().addAll(ChangeTo);
         ChoiceBoxSwap.getItems().addAll(Swap);
-        ChoiceBoxSwap.setOnAction(this::getSwap);
-        ChoiceBoxChangeTo.setOnAction(this::getSwap);
+//        ChoiceBoxSwap.setOnAction(this::getSwap);
+//        ChoiceBoxChangeTo.setOnAction(this::getSwap);
     }
 
     public void getSwap(ActionEvent event) {
-        String swap = ChoiceBoxSwap.getValue();
-        String ChangeTo = ChoiceBoxChangeTo.getValue();
-        lblSwap.setText(swap);
-        lblChangeTo.setText(ChangeTo);
+//        String swap = ChoiceBoxSwap.getValue();
+//        String ChangeTo = ChoiceBoxChangeTo.getValue();
+//        lblSwap.setText(swap);
+//        lblChangeTo.setText(ChangeTo);
 
     }
     @FXML

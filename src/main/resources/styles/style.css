@@ -1,0 +1,5 @@
+/* styles.css */
+.choice-box .list-cell {
+    -fx-font-size: 16px; /* تغییر اندازه فونت */
+    -fx-text-fill: blue; /* تغییر رنگ متن */
+}
