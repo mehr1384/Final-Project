@@ -20,7 +20,6 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
-import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 public class HomePage implements Initializable {
@@ -41,14 +40,18 @@ public class HomePage implements Initializable {
 
     @FXML
     public TableColumn<Table, Double> TablePrice;
-    private double[] price = new double[]{5,22};
+
     private double lastEUR;
     private double lastTOMAN;
     private double lastGBP;
     private double lastYEN;
-    private  double[] minPrice = new double[]{0.9,42000.0,110.0,0.8};
-    private double[] maxPrice = new double[]{0.9,42000.0,110.0,0.8};
-    private CurrencyDataLoader currencyDataLoader = new CurrencyDataLoader() ;
+    private static double[] minPrice = new double[]{0.9, 42000.0, 110.0, 0.8};
+    private static double[] maxPrice = new double[]{0.9, 42000.0, 110.0, 0.8};
+    private static double eurChange;
+    private static double tomanChange;
+    private static double yenChange;
+    private static double gbpChange;
+    private CurrencyDataLoader currencyDataLoader = CurrencyDataLoader.getInstance();
 
     @FXML
     private Button btnProfile;
@@ -64,17 +67,14 @@ public class HomePage implements Initializable {
         stage.show();
     }
 
-
-
     private ObservableList<Table> observableList = FXCollections.observableArrayList(
-
-            new Table("USD", 1, 1,1, 1),
-            new Table("EUR", CurrencyDataLoader.EUR, 0, maxPrice[0], minPrice[0]),
-            new Table("TOMAN",CurrencyDataLoader.TOMAN, 0,maxPrice[1], minPrice[1]),
-            new Table("YEN",CurrencyDataLoader.YEN, 0,maxPrice[2], minPrice[2]),
-            new Table("GBP", CurrencyDataLoader.GBP, 0, maxPrice[3], minPrice[3])
-
+            new Table("USD",1, 0, 1, 1),
+            new Table("EUR", CurrencyDataLoader.EUR, eurChange, maxPrice[0], minPrice[0]),
+            new Table("TOMAN", CurrencyDataLoader.TOMAN, tomanChange, maxPrice[1], minPrice[1]),
+            new Table("YEN", CurrencyDataLoader.YEN, yenChange, maxPrice[2], minPrice[2]),
+            new Table("GBP", CurrencyDataLoader.GBP, gbpChange, maxPrice[3], minPrice[3])
     );
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         TableMarket.setCellValueFactory(new PropertyValueFactory<>("TableMarket"));
@@ -82,13 +82,6 @@ public class HomePage implements Initializable {
         TableConversion.setCellValueFactory(new PropertyValueFactory<>("TableConversion"));
         TableMin.setCellValueFactory(new PropertyValueFactory<>("TableMin"));
         TableMax.setCellValueFactory(new PropertyValueFactory<>("TableMax"));
-
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event -> {
-            currencyDataLoader.readAndUpdateData();
-            updateData();
-        }));
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
 
         TableMarket.setCellFactory(new Callback<>() {
             @Override
@@ -130,13 +123,18 @@ public class HomePage implements Initializable {
                 }
             }
         });
-        TableView.setItems(observableList);
-    }
 
+        TableView.setItems(observableList);
+
+        // Schedule data updates
+        Timeline updateTimeline = new Timeline(new KeyFrame(Duration.seconds(3), event -> updateData()));
+        updateTimeline.setCycleCount(Timeline.INDEFINITE);
+        updateTimeline.play();
+    }
 
     public void openPage() {
         Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SignUp.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SwapPage.fxml"));
         try {
             Scene scene = new Scene(fxmlLoader.load());
             stage.setTitle("SignUp");
@@ -146,6 +144,7 @@ public class HomePage implements Initializable {
             throw new RuntimeException(e);
         }
     }
+
     private void updateData() {
         lastEUR = observableList.get(1).getTablePrice();
         lastGBP = observableList.get(4).getTablePrice();
@@ -157,54 +156,52 @@ public class HomePage implements Initializable {
         observableList.get(3).setTablePrice(CurrencyDataLoader.YEN);
         observableList.get(4).setTablePrice(CurrencyDataLoader.GBP);
 
-        double eurChange = getPercentChange(CurrencyDataLoader.EUR, lastEUR);
-        double tomanChange = getPercentChange(CurrencyDataLoader.TOMAN, lastTOMAN);
-        double yenChange = getPercentChange(CurrencyDataLoader.YEN, lastYEN);
-        double gbpChange = getPercentChange(CurrencyDataLoader.GBP, lastGBP);
+        eurChange = getPercentChange(CurrencyDataLoader.EUR, lastEUR);
+        tomanChange = getPercentChange(CurrencyDataLoader.TOMAN, lastTOMAN);
+        yenChange = getPercentChange(CurrencyDataLoader.YEN, lastYEN);
+        gbpChange = getPercentChange(CurrencyDataLoader.GBP, lastGBP);
 
         observableList.get(1).setTableConversion(eurChange);
         observableList.get(2).setTableConversion(tomanChange);
         observableList.get(3).setTableConversion(yenChange);
         observableList.get(4).setTableConversion(gbpChange);
 
-        if(minPrice[0] > CurrencyDataLoader.EUR) {
+        if (minPrice[0] > CurrencyDataLoader.EUR) {
             observableList.get(1).setTableMin(CurrencyDataLoader.EUR);
             minPrice[0] = CurrencyDataLoader.EUR;
         }
-        if(maxPrice[0] < CurrencyDataLoader.EUR) {
+        if (maxPrice[0] < CurrencyDataLoader.EUR) {
             observableList.get(1).setTableMax(CurrencyDataLoader.EUR);
             maxPrice[0] = CurrencyDataLoader.EUR;
         }
-        if(minPrice[1] > CurrencyDataLoader.TOMAN) {
+        if (minPrice[1] > CurrencyDataLoader.TOMAN) {
             observableList.get(2).setTableMin(CurrencyDataLoader.TOMAN);
             minPrice[1] = CurrencyDataLoader.TOMAN;
         }
-        if(maxPrice[1] < CurrencyDataLoader.TOMAN) {
+        if (maxPrice[1] < CurrencyDataLoader.TOMAN) {
             observableList.get(2).setTableMax(CurrencyDataLoader.TOMAN);
             maxPrice[1] = CurrencyDataLoader.TOMAN;
         }
-        if(minPrice[2] > CurrencyDataLoader.YEN) {
+        if (minPrice[2] > CurrencyDataLoader.YEN) {
             observableList.get(3).setTableMin(CurrencyDataLoader.YEN);
             minPrice[2] = CurrencyDataLoader.YEN;
         }
-        if(maxPrice[2] < CurrencyDataLoader.YEN) {
+        if (maxPrice[2] < CurrencyDataLoader.YEN) {
             observableList.get(3).setTableMax(CurrencyDataLoader.YEN);
             maxPrice[2] = CurrencyDataLoader.YEN;
         }
-        if(minPrice[3] > CurrencyDataLoader.GBP) {
+        if (minPrice[3] > CurrencyDataLoader.GBP) {
             observableList.get(4).setTableMin(CurrencyDataLoader.GBP);
             minPrice[3] = CurrencyDataLoader.GBP;
         }
-        if(maxPrice[3] < CurrencyDataLoader.GBP) {
+        if (maxPrice[3] < CurrencyDataLoader.GBP) {
             observableList.get(4).setTableMax(CurrencyDataLoader.GBP);
             maxPrice[3] = CurrencyDataLoader.GBP;
         }
+
         TableView.refresh();
     }
-
     public double getPercentChange(double current, double last) {
         return (((current - last) / last) * 100);
     }
-
-
 }

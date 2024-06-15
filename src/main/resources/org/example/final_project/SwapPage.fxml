@@ -19,17 +19,12 @@
                </font>
             </Button>
             <Label layoutX="64.0" layoutY="66.0" prefHeight="94.0" prefWidth="515.0" style="-fx-background-color: #3ca5bd54; -fx-background-radius: 15;" text="Label" textFill="#3ca5bd00" />
-            <TextField alignment="CENTER" layoutX="300.0" layoutY="76.0" prefHeight="74.0" prefWidth="278.0" style="-fx-background-radius: 15; -fx-background-color: #3ca5bd00;" text="0.0">
+            <TextField fx:id="textFieldSwapEntrance" alignment="CENTER" layoutX="300.0" layoutY="76.0" onAction="#SwapEntrance" prefHeight="74.0" prefWidth="278.0" style="-fx-background-radius: 15; -fx-background-color: #3ca5bd00;" text="0.0">
                <font>
-                  <Font size="32.0" />
+                  <Font name="System Bold Italic" size="32.0" />
                </font>
             </TextField>
             <Label layoutX="64.0" layoutY="200.0" prefHeight="94.0" prefWidth="515.0" style="-fx-background-color: #3ca5bd54; -fx-background-radius: 15;" text="Label" textFill="#3ca5bd00" />
-            <TextField alignment="CENTER" layoutX="300.0" layoutY="210.0" prefHeight="74.0" prefWidth="278.0" style="-fx-background-radius: 15; -fx-background-color: #3ca5bd00;" text="0.0">
-               <font>
-                  <Font size="32.0" />
-               </font>
-            </TextField>
             <ChoiceBox fx:id="ChoiceBoxSwap" layoutX="138.0" layoutY="80.0" prefHeight="66.0" prefWidth="85.0" style="-fx-background-color: #3ca5bd00;" stylesheets="@../../../styles/style.css" />
             <ChoiceBox fx:id="ChoiceBoxChangeTo" layoutX="141.0" layoutY="213.0" prefHeight="60.0" prefWidth="86.0" style="-fx-background-color: #3ca5bd00;" />
             <Button fx:id="btnToken" layoutX="236.0" layoutY="424.0" mnemonicParsing="false" onAction="#TokenPage" prefHeight="38.0" prefWidth="173.0" style="-fx-background-radius: 15; -fx-background-color: #3da7c1;" text="Token" textFill="WHITE">
@@ -52,12 +47,12 @@
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="399.0" layoutY="300.0" text=" 1 Bitcoin  =">
+            <Label layoutX="399.0" layoutY="300.0" text=" 1 USD  =">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="480.0" layoutY="300.0" text="411.255 Tether">
+            <Label fx:id="lblRefrencePrice" layoutX="461.0" layoutY="300.0" prefHeight="18.0" prefWidth="104.0" text="851465.">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
@@ -67,6 +62,12 @@
                   <Image url="@../../../imed/switch-icon-on-white-background-flat-style-exchange-icon-for-your-web-site-design-logo-app-ui-transfer-symbol-convert-sign-vector-۱.jpg" />
                </image>
             </ImageView>
+            <ChoiceBox fx:id="ChoiceBoxRefrencePrice" layoutX="507.0" layoutY="293.0" prefHeight="30.0" prefWidth="53.0" style="-fx-background-color: #3ca5bd00;" />
+            <Label fx:id="textFieldChangeToOutput" alignment="CENTER" layoutX="300.0" layoutY="210.0" prefHeight="74.0" prefWidth="278.0" text="0.0">
+               <font>
+                  <Font name="System Bold Italic" size="32.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

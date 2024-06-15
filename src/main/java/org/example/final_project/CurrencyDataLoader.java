@@ -2,15 +2,15 @@ package org.example.final_project;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Application;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class CurrencyDataLoader extends Application {
+public class CurrencyDataLoader {
+
+    private static CurrencyDataLoader instance;
 
     public static double USD;
     public static String date;
@@ -19,35 +19,36 @@ public class CurrencyDataLoader extends Application {
     public static double YEN;
     public static double GBP;
 
-    public BufferedReader br;
+    private BufferedReader br;
     private String filename = "C:\\Users\\asus\\IdeaProjects\\Final_Project\\src\\main\\resources\\imed\\currency_prices.csv";
+    private Timeline timeline;
 
-    public CurrencyDataLoader() {
+    private CurrencyDataLoader() {
         try {
             br = new BufferedReader(new FileReader(filename));
+            // Initialize the timeline to update data every 3 seconds
+            timeline = new Timeline(new KeyFrame(Duration.seconds(3), event -> readAndUpdateData()));
+            timeline.setCycleCount(Timeline.INDEFINITE);
+            timeline.play();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        try {
-            br = new BufferedReader(new FileReader(filename));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event -> readAndUpdateData()));
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
+    public static CurrencyDataLoader getInstance() {
+        if (instance == null) {
+            instance = new CurrencyDataLoader();
+        }
+        return instance;
     }
-    int count = 0;
+
     public void readAndUpdateData() {
         try {
             String line = br.readLine();
-
-            if (  line!=null) {
-
+            while (line != null && line.trim().isEmpty()) {
+                line = br.readLine(); // Skip empty lines
+            }
+            if (line != null) {
                 String[] parts = line.split("\\s+");
                 date = parts[0] + " " + parts[1];
                 USD = Double.parseDouble(parts[2]);
@@ -56,7 +57,7 @@ public class CurrencyDataLoader extends Application {
                 YEN = Double.parseDouble(parts[5]);
                 GBP = Double.parseDouble(parts[6]);
 
-                // چاپ داده‌ها
+                // Print data for debugging
                 System.out.println("Date: " + date);
                 System.out.println("USD: " + USD);
                 System.out.println("EUR: " + EUR);
@@ -64,13 +65,14 @@ public class CurrencyDataLoader extends Application {
                 System.out.println("YEN: " + YEN);
                 System.out.println("GBP: " + GBP);
             }
-            count++;
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static void main(String[] args) {
-        launch(args);
+    public void stopUpdating() {
+        if (timeline != null) {
+            timeline.stop();
+        }
     }
 }
