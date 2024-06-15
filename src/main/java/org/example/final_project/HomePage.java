@@ -83,29 +83,30 @@ public class HomePage implements Initializable {
         TableMin.setCellValueFactory(new PropertyValueFactory<>("TableMin"));
         TableMax.setCellValueFactory(new PropertyValueFactory<>("TableMax"));
 
-        TableMarket.setCellFactory(new Callback<>() {
-            @Override
-            public TableCell<Table, String> call(TableColumn<Table, String> param) {
-                return new TableCell<>() {
-                    @Override
-                    protected void updateItem(String item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (item != null) {
-                            setText(item);
-                            setStyle("-fx-text-fill: blue;");
-                            // اضافه کردن رویداد کلیک برای هر سلول
-                            setOnMouseClicked(event -> {
-                                if (!isEmpty()) {
-                                    openPage(); // فراخوانی متد باز کردن صفحه "SignUp"
-                                }
-                            });
-                        } else {
-                            setText(null);
+
+               TableMarket.setCellFactory(new Callback<>() {
+                @Override
+                public TableCell<Table, String> call(TableColumn<Table, String> param) {
+                    return new TableCell<>() {
+                        @Override
+                        protected void updateItem(String item, boolean empty) {
+                            super.updateItem(item, empty);
+                            if (item != null) {
+                                setText(item);
+                                setStyle("-fx-text-fill: blue;");
+                                setOnMouseClicked(event -> {
+                                    if (!isEmpty()) {
+                                        Table clickedTable = getTableView().getItems().get(getIndex());
+                                        openPage(clickedTable.getTableMarket(), clickedTable.getTablePrice(), clickedTable.getTableConversion());
+                                    }
+                                });
+                            } else {
+                                setText(null);
+                            }
                         }
-                    }
-                };
-            }
-        });
+                    };
+                }
+            });
         TableConversion.setCellFactory(column -> new TableCell<>() {
             @Override
             protected void updateItem(Double item, boolean empty) {
@@ -144,6 +145,43 @@ public class HomePage implements Initializable {
             throw new RuntimeException(e);
         }
     }
+    public void openPage(String currency, double price, double conversion) {
+        String fxmlFile = "";
+        switch (currency) {
+            case "USD":
+                fxmlFile = "USDPage.fxml";
+                break;
+            case "EUR":
+                fxmlFile = "EURPage.fxml";
+                break;
+            case "TOMAN":
+                fxmlFile = "TomanPage.fxml";
+                break;
+            case "YEN":
+                fxmlFile = "YENPage.fxml";
+                break;
+            case "GBP":
+                fxmlFile = "GBPPage.fxml";
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown currency: " + currency);
+        }
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
+            Scene scene = new Scene(fxmlLoader.load());
+            Token controller = fxmlLoader.getController();
+            controller.setToken(currency, price, conversion);
+
+            Stage stage = new Stage();
+            stage.setTitle(currency + " Details");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     private void updateData() {
         lastEUR = observableList.get(1).getTablePrice();

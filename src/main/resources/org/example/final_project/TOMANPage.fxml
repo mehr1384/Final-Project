@@ -2,15 +2,27 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="546.0" prefWidth="714.0" style="-fx-background-color: #0080ff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.final_project.Token">
    <children>
       <AnchorPane layoutX="35.0" layoutY="26.0" prefHeight="494.0" prefWidth="644.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15;">
          <children>
-            <Label layoutX="33.0" layoutY="41.0" prefHeight="34.0" prefWidth="98.0" text="Label" />
-            <Label layoutX="114.0" layoutY="41.0" prefHeight="34.0" prefWidth="62.0" text="Label" />
-            <Label layoutX="162.0" layoutY="49.0" text="Label" />
+            <Label fx:id="priceLabel" layoutX="33.0" layoutY="35.0" prefHeight="46.0" prefWidth="136.0" text="42000.22">
+               <font>
+                  <Font name="System Bold Italic" size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="currencyLabel" layoutX="170.0" layoutY="39.0" prefHeight="45.0" prefWidth="62.0" text="TOMAN">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="conversionLabel" layoutX="235.0" layoutY="49.0" prefHeight="25.0" prefWidth="47.0" text="1.0">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Label>
             <Label layoutX="33.0" layoutY="176.0" text="Label" />
             <Label layoutX="33.0" layoutY="120.0" text="Label" />
             <Label layoutX="162.0" layoutY="120.0" text="Label" />
