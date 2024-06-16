@@ -226,11 +226,14 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.BufferedReader;
@@ -267,11 +270,48 @@ public class Token implements Initializable {
     private Button btn1Week;
     @FXML
     private Button btn1Year;
+    @FXML
+    private Button btnExchange;
+
+    @FXML
+    private Button btnProfile;
+
+    @FXML
+    private Button btnSwap;
 
     private Queue<XYChart.Data<String, Number>> dataQueue = new LinkedList<>();
     private List<XYChart.Data<String, Number>> currentDataList = new ArrayList<>();
     private Timeline timelineRead;
     private Timeline timelineUpdate;
+    private int tokenNumber;
+
+    @FXML
+    void Exchange(ActionEvent event) {
+
+
+    }
+
+    @FXML
+    void Profile(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnProfile.getScene().getWindow();
+        stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(ProfilePage.class.getResource("ProfilePage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Profile");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void Swap(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnSwap.getScene().getWindow();
+        stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(ProfilePage.class.getResource("SwapPage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Swap ");
+        stage.setScene(scene);
+        stage.show();
+    }
 
     @FXML
     void day(ActionEvent event) {
@@ -357,8 +397,25 @@ public class Token implements Initializable {
     }
 
     public void setToken(String currency, double price, double conversion) {
-        this.price = price;
 
+        switch (currency){
+            case "USD":
+                price = 1;
+                tokenNumber=2;
+                break;
+            case "EUR":
+                tokenNumber = 3;
+                break;
+            case "TOMAN":
+                tokenNumber = 4;
+                break;
+            case "YEN":
+                tokenNumber = 5;
+                break;
+            case "GBP":
+                tokenNumber = 6;
+                break;
+        }
         if (conversion < 0) {
             conversionLabel.setStyle("-fx-text-fill: red;");
         } else {
@@ -387,8 +444,14 @@ public class Token implements Initializable {
                 if (line.trim().isEmpty()) continue;
                 String[] parts = line.split("\\s+");
                 if (parts.length >= 6) {
-                    String dateTime = parts[0] + " " + parts[1];
-                    double value = Double.parseDouble(parts[6]);
+                    String dateTime = parts[1];
+                    double value = 0;
+                    if(tokenNumber ==2){
+                         value = 1;
+                    }
+                    else {
+                       value = Double.parseDouble(parts[tokenNumber]);
+                    }
                     dataQueue.add(new XYChart.Data<>(dateTime, value));
                 }
             }

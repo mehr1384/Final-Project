@@ -54,17 +54,17 @@
                   <Font name="System Bold Italic" size="17.0" />
                </font>
             </Label>
-            <Button layoutX="34.0" layoutY="332.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="183.0" style="-fx-background-color: #0080ff; -fx-background-radius: 15;" text="Swap" textFill="WHITE">
+            <Button fx:id="btnSwap" layoutX="34.0" layoutY="332.0" mnemonicParsing="false" onAction="#Swap" prefHeight="34.0" prefWidth="183.0" style="-fx-background-color: #0080ff; -fx-background-radius: 15;" text="Swap" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="34.0" layoutY="382.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="183.0" style="-fx-background-color: #0080ff; -fx-background-radius: 15;" text="Exchange" textFill="WHITE">
+            <Button fx:id="btnExchange" layoutX="34.0" layoutY="382.0" mnemonicParsing="false" onAction="#Exchange" prefHeight="34.0" prefWidth="183.0" style="-fx-background-color: #0080ff; -fx-background-radius: 15;" text="Exchange" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="34.0" layoutY="432.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="183.0" style="-fx-background-color: #0080ff; -fx-background-radius: 15;" text="Profile" textFill="WHITE">
+            <Button fx:id="btnProfile" layoutX="34.0" layoutY="432.0" mnemonicParsing="false" onAction="#Profile" prefHeight="34.0" prefWidth="183.0" style="-fx-background-color: #0080ff; -fx-background-radius: 15;" text="Profile" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
