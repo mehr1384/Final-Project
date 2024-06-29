@@ -117,8 +117,6 @@ public class ExchangePage implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
-
     @FXML
     void Sell(ActionEvent event) {
         try {
@@ -141,7 +139,6 @@ public class ExchangePage implements Initializable {
             alert.showAndWait();
         }
     }
-
     @FXML
     void Wallet(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnWallet.getScene().getWindow();
