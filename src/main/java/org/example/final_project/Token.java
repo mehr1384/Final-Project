@@ -286,9 +286,13 @@ public class Token implements Initializable {
     private int tokenNumber;
 
     @FXML
-    void Exchange(ActionEvent event) {
-
-
+    void Exchange(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnExchange.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ExchangePage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Exchange Page");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML

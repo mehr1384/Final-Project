@@ -79,7 +79,6 @@ public class ProfilePage {
     }
     @FXML
     void HomePage(ActionEvent event) throws IOException {
-        // تغییر صفحه به HomePage
         Stage stage = (Stage) btnHomePage.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HomePage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());

@@ -57,7 +57,6 @@ public class CurrencyDataLoader {
                 YEN = Double.parseDouble(parts[5]);
                 GBP = Double.parseDouble(parts[6]);
 
-                // Print data for debugging
                 System.out.println("Date: " + date);
                 System.out.println("USD: " + USD);
                 System.out.println("EUR: " + EUR);

@@ -132,19 +132,6 @@ public class HomePage implements Initializable {
         updateTimeline.setCycleCount(Timeline.INDEFINITE);
         updateTimeline.play();
     }
-
-    public void openPage() {
-        Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SwapPage.fxml"));
-        try {
-            Scene scene = new Scene(fxmlLoader.load());
-            stage.setTitle("SignUp");
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
     public void openPage(String currency, double price, double conversion) {
         String fxmlFile = "";
         switch (currency) {

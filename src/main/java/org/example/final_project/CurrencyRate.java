@@ -10,12 +10,10 @@ public class CurrencyRate {
         this.oldRate = oldRate;
         this.currentRate = currentRate;
     }
-
     public void updateRate(double newRate) {
         this.oldRate = this.currentRate;
         this.currentRate = newRate;
     }
-
     public   double getPercentChange() {
         return  (((currentRate - oldRate) / oldRate) * 100);
     }

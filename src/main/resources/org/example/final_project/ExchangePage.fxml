@@ -8,35 +8,31 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="546.0" prefWidth="714.0" style="-fx-background-color: #3da7c1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.final_project.ExchangePage">
    <children>
       <AnchorPane layoutX="35.0" layoutY="25.0" prefHeight="494.0" prefWidth="644.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15;">
          <children>
-            <TextField fx:id="textFieldCurrency" layoutX="14.0" layoutY="33.0" prefHeight="60.0" prefWidth="453.0" />
+            <TextField fx:id="textFieldPrice" layoutX="14.0" layoutY="103.0" prefHeight="60.0" prefWidth="198.0" promptText="base price">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font></TextField>
             <ChoiceBox fx:id="ChoiceBoxCurrency" layoutX="468.0" layoutY="33.0" prefHeight="60.0" prefWidth="86.0" style="-fx-background-color: #3ca5bd00;" />
-            <Button fx:id="btnBuy" layoutX="14.0" layoutY="103.0" mnemonicParsing="false" onAction="#Buy" prefHeight="30.0" prefWidth="221.0" style="-fx-background-color: #3da7c1;" text="Buy" textFill="WHITE">
+            <Button fx:id="btnBuy" layoutX="232.0" layoutY="103.0" mnemonicParsing="false" onAction="#Buy" prefHeight="30.0" prefWidth="221.0" style="-fx-background-color: #3da7c1;" text="Buy" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btnSell" layoutX="254.0" layoutY="103.0" mnemonicParsing="false" onAction="#Sell" prefHeight="30.0" prefWidth="213.0" style="-fx-background-color: #3da7c1;" text="Sell" textFill="WHITE">
+            <Button fx:id="btnSell" layoutX="231.0" layoutY="141.0" mnemonicParsing="false" onAction="#Sell" prefHeight="30.0" prefWidth="222.0" style="-fx-background-color: #3da7c1;" text="Sell" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Button>
-            <TableView layoutX="23.0" layoutY="200.0" prefHeight="270.0" prefWidth="284.0">
+            <TableView fx:id="Table" layoutX="23.0" layoutY="200.0" prefHeight="270.0" prefWidth="284.0">
                <columns>
-                  <TableColumn prefWidth="112.00006103515625" text="C1" />
-                  <TableColumn prefWidth="96.00006103515625" text="C2" />
-                  <TableColumn prefWidth="69.60003662109375" text="C2" />
-               </columns>
-            </TableView>
-            <TableView layoutX="335.0" layoutY="200.0" prefHeight="270.0" prefWidth="284.0">
-               <columns>
-                  <TableColumn prefWidth="112.00006103515625" text="C1" />
-                  <TableColumn prefWidth="96.00006103515625" text="C2" />
-                  <TableColumn prefWidth="69.60003662109375" text="C2" />
+                  <TableColumn fx:id="TableMarket" prefWidth="71.0" text="Market" />
+                  <TableColumn fx:id="TableAmount" prefWidth="92.0" text="Amount" />
+                  <TableColumn fx:id="TablePrice" minWidth="4.0" prefWidth="61.5" text="Price" />
+                  <TableColumn fx:id="TableType" prefWidth="59.0" text="Type" />
                </columns>
             </TableView>
             <Button fx:id="btnHome" layoutX="577.0" layoutY="24.0" mnemonicParsing="false" onAction="#HomePage" prefHeight="30.0" prefWidth="41.0" style="-fx-background-color: #3da7c1;" text="home" textFill="WHITE">
@@ -54,6 +50,19 @@
                   <Font name="System Bold Italic" size="9.0" />
                </font>
             </Button>
+            <TableView fx:id="TableTransaction" layoutX="335.0" layoutY="200.0" prefHeight="270.0" prefWidth="284.0">
+               <columns>
+                  <TableColumn fx:id="TableMarketTransaction" prefWidth="71.0" text="Market" />
+                  <TableColumn fx:id="TableAmountTransaction" prefWidth="92.0" text="Amount" />
+                  <TableColumn fx:id="TablePriceTransaction" minWidth="4.0" prefWidth="61.5" text="Price" />
+                  <TableColumn fx:id="TableTypeTransaction" prefWidth="59.0" text="Type" />
+               </columns>
+            </TableView>
+            <TextField fx:id="textFieldCurrency" layoutX="14.0" layoutY="33.0" prefHeight="60.0" prefWidth="436.0" promptText=" amount of currency">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font>
+            </TextField>
          </children>
       </AnchorPane>
    </children>
