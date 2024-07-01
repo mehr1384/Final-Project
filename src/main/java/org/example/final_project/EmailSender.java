@@ -10,8 +10,8 @@ import javax.mail.internet.*;
 public class EmailSender {
 
     public static void sendEmail(String recipient, String code) {
-        final String username = "faeze.saghi13484@gmail.com";
-        final String password = "faeze1384";
+        final String username = "javaa1384@gmail.com";
+        final String password = "javajava";
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
@@ -29,7 +29,7 @@ public class EmailSender {
         try {
 
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("faeze.saghi13484@gmail.com"));
+            message.setFrom(new InternetAddress("javaa1384@gmail.com"));
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(recipient));
             message.setSubject("Your Verification Code");

@@ -4,8 +4,11 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Table {
-    private SimpleStringProperty tableMarket, tableType, tableMarketExchange;
-    private SimpleDoubleProperty tablePrice, tableConversion, tableMax, tableMin, tableAmount, tableBasePrice;
+    private SimpleStringProperty tableMarket, tableType, tableMarketExchange,
+            tableDate,tableMarketHistory,tableStatus;
+    private SimpleStringProperty tableTypeHistory  ;
+    private SimpleDoubleProperty tablePrice, tableConversion, tableMax, tableMin, tableAmount,
+            tableBasePrice,tableBasePriceHistory,tableAmountHistory;
 
     public Table(String tableMarket, double tablePrice, double tableConversion, double tableMax, double tableMin) {
         this.tableMarket = new SimpleStringProperty(tableMarket);
@@ -20,10 +23,65 @@ public class Table {
         this.tableType = new SimpleStringProperty(tableType);
         this.tableBasePrice = new SimpleDoubleProperty(tableBasePrice);
         this.tableAmount = new SimpleDoubleProperty(tableAmount);
+        this.tableStatus = new SimpleStringProperty("Pending");
+
 
     }
+    public Table(String tableMarket, double tableAmount,double tableBasePrice, String tableType,String tableStatus,String tableDate) {
+        this.tableMarketHistory = new SimpleStringProperty(tableMarket);
+        this.tableTypeHistory = new SimpleStringProperty(tableType);
+        this.tableBasePriceHistory = new SimpleDoubleProperty(tableBasePrice);
+        this.tableAmountHistory = new SimpleDoubleProperty(tableAmount);
+        this.tableDate = new SimpleStringProperty(tableDate);
+        this.tableStatus = new SimpleStringProperty(tableStatus);
+    }
 
-    // Getters and setters
+    public void setTableStatus(String tableStatus) {
+        this.tableStatus.set(tableStatus);
+    }
+
+    public String getTableStatus() {
+        return tableStatus.get();
+    }
+
+    public void setTableTypeHistory(String tableTypeHistory) {
+        this.tableTypeHistory.set(tableTypeHistory );
+    }
+
+    public String getTableTypeHistory() {
+        return tableTypeHistory.get();
+    }
+    public void setTableAmountHistory(double tableAmountHistory) {
+        this.tableAmountHistory.set(tableAmountHistory);
+    }
+
+    public void setTableBasePriceHistory(double tableBasePriceHistory) {
+        this.tableBasePriceHistory.set(tableBasePriceHistory);
+    }
+
+    public double getTableAmountHistory() {
+        return tableAmountHistory.get();
+    }
+
+    public double getTableBasePriceHistory() {
+        return tableBasePriceHistory.get();
+    }
+    public void setTableMarketHistory(String tableMarketHistory) {
+        this.tableMarketHistory.set(tableMarketHistory);
+    }
+
+    public String getTableMarketHistory() {
+        return tableMarketHistory.get();
+    }
+
+    public void setTableDate(String tableDate) {
+        this.tableDate.set(tableDate);
+    }
+
+    public String getTableDate() {
+        return tableDate.get();
+    }
+
     public String getTableMarket() {
         return tableMarket != null ? tableMarket.get() : null;
     }
@@ -35,22 +93,9 @@ public class Table {
             this.tableMarket = new SimpleStringProperty(tableMarket);
         }
     }
-
     public String getTableMarketExchange() {
         return tableMarketExchange != null ? tableMarketExchange.get() : null;
     }
-
-//    public void setTableBasePrice(String tableMarketExchange) {
-//        if (this.tableBasePrice != null) {
-//            this.tableBasePrice.set(tableBasePrice);
-//        } else {
-//            this.tableBasePrice = new SimpleStringProperty(tableBasePrice);
-//        }
-//    }
-//
-//    public Double getTableBasePrice() {
-//        return tableBasePrice != null ? tableBasePrice.get() : null;
-//    }
 
     public void setTableMarketExchange(String tableMarketExchange) {
         if (this.tableMarketExchange != null) {

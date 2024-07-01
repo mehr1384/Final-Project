@@ -56,13 +56,13 @@ public class CurrencyDataLoader {
                 TOMAN = Double.parseDouble(parts[4]);
                 YEN = Double.parseDouble(parts[5]);
                 GBP = Double.parseDouble(parts[6]);
-
-                System.out.println("Date: " + date);
-                System.out.println("USD: " + USD);
-                System.out.println("EUR: " + EUR);
-                System.out.println("TOMAN: " + TOMAN);
-                System.out.println("YEN: " + YEN);
-                System.out.println("GBP: " + GBP);
+//
+//                System.out.println("Date: " + date);
+//                System.out.println("USD: " + USD);
+//                System.out.println("EUR: " + EUR);
+//                System.out.println("TOMAN: " + TOMAN);
+//                System.out.println("YEN: " + YEN);
+//                System.out.println("GBP: " + GBP);
             }
         } catch (IOException e) {
             e.printStackTrace();

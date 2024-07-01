@@ -115,7 +115,12 @@ public class ProfilePage {
     }
     @FXML
     void History(ActionEvent event) throws IOException {
-
+        Stage stage = (Stage) btnHistory.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HistoryPage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("History Page");
+        stage.setScene(scene);
+        stage.show();
 
     }
 
@@ -136,10 +141,8 @@ public class ProfilePage {
     boolean TextFieldEmail(ActionEvent event) {
         String regex = "^[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.com$";
         if (Pattern.matches(regex, textEmail.getText())) {
-          //  lblErrorEmail.setText("");
             return true;
         }else{
-         //   lblErrorEmail.setText("Email is incorrect.");
             return false;}
     }
 
@@ -147,10 +150,8 @@ public class ProfilePage {
     boolean TextFieldFirstName(ActionEvent event) {
         String regex = "^[a-zA-Z]{1,18}$";
         if(Pattern.matches(regex, textFirstName.getText())){
-           // lblErrorFirstName.setText("");
             return true;
         }else {
-           // lblErrorFirstName.setText("First name is incorrect.");
             return false;
         }
     }
@@ -158,10 +159,8 @@ public class ProfilePage {
     boolean TextFieldLastName(ActionEvent event) {
         String regex = "^[a-zA-Z]{1,18}$";
         if ((Pattern.matches(regex, textLastName.getText()))) {
-          //  lblErrorLastName.setText("");
             return true;
         }else {
-          //  lblErrorLastName.setText("Last name is incorrect.");
             return false;
         }
     }
@@ -170,10 +169,8 @@ public class ProfilePage {
     boolean TextFieldPassword(ActionEvent event) {
         String regex = "^[a-zA-Z0-9]{8,12}$";
         if (Pattern.matches(regex, textPassword.getText())){
-           // lblErrorPassword.setText("");
             return true;
         }else{
-         //   lblErrorPassword.setText("Password is incorrect.");
             return false;
         }
     }
@@ -182,10 +179,8 @@ public class ProfilePage {
     boolean TextFieldPhone(ActionEvent event) {
         String regex = "^09[0-9]{9}$";
         if (Pattern.matches(regex, textPhone.getText())){
-            //lblErrorPhoneNumber.setText("");
             return true;
         }else{
-          //  lblErrorPhoneNumber.setText("Phone number is incorrect.");
             return false;
         }
     }

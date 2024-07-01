@@ -1,6 +1,5 @@
 package org.example.final_project;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,12 +9,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class ExchangePage implements Initializable {
+    static String status = "pending";
 
     @FXML
     private TableView<Table> Table;
@@ -72,8 +75,8 @@ public class ExchangePage implements Initializable {
     @FXML
     private TextField textFieldCurrency;
 
-    private ObservableList<Table> observableListTable = FXCollections.observableArrayList();
-    private ObservableList<Table> observableListTransaction = FXCollections.observableArrayList();
+    private ObservableList<Table> observableListTable = TableDataSingleton.getInstance().getTableData();
+    private ObservableList<Table> observableListTransaction = TableDataSingleton.getInstance().getTransactionData();
 
     @FXML
     void Buy(ActionEvent event) {
@@ -85,6 +88,14 @@ public class ExchangePage implements Initializable {
             if (selectedMarket != null && !selectedMarket.isEmpty()) {
                 Table newItem = new Table(selectedMarket, amount, price, "Buy");
                 observableListTable.add(newItem);
+
+                // Add to history
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String currentDate = dateFormat.format(new Date());
+                String status = "pending";
+                Table historyItem = new Table(selectedMarket, amount, price, "Buy",status, currentDate);
+                HistoryPage.addToHistory(historyItem);
+
                 textFieldCurrency.clear();
                 textFieldPrice.clear();
             } else {
@@ -117,6 +128,7 @@ public class ExchangePage implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
     void Sell(ActionEvent event) {
         try {
@@ -128,6 +140,14 @@ public class ExchangePage implements Initializable {
             if (selectedMarket != null && !selectedMarket.isEmpty()) {
                 Table newItem = new Table(selectedMarket, amount, price, "Sell");
                 observableListTable.add(newItem);
+
+                // Add to history
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String currentDate = dateFormat.format(new Date());
+                String status = "pending";
+                Table historyItem = new Table(selectedMarket, amount, price, "Sell", status, currentDate);
+                HistoryPage.addToHistory(historyItem);
+
                 textFieldCurrency.clear();
                 textFieldPrice.clear();
             } else {
@@ -139,6 +159,7 @@ public class ExchangePage implements Initializable {
             alert.showAndWait();
         }
     }
+
     @FXML
     void Wallet(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnWallet.getScene().getWindow();
@@ -148,6 +169,7 @@ public class ExchangePage implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         TableMarket.setCellValueFactory(new PropertyValueFactory<>("tableMarketExchange"));
@@ -155,16 +177,39 @@ public class ExchangePage implements Initializable {
         TablePrice.setCellValueFactory(new PropertyValueFactory<>("tableBasePrice"));
         TableType.setCellValueFactory(new PropertyValueFactory<>("tableType"));
 
-
         TableMarketTransaction.setCellValueFactory(new PropertyValueFactory<>("tableMarketExchange"));
         TableAmountTransaction.setCellValueFactory(new PropertyValueFactory<>("tableAmount"));
         TablePriceTransaction.setCellValueFactory(new PropertyValueFactory<>("tableBasePrice"));
         TableTypeTransaction.setCellValueFactory(new PropertyValueFactory<>("tableType"));
-
 
         ChoiceBoxCurrency.getItems().addAll(Currency);
 
         Table.setItems(observableListTable);
         TableTransaction.setItems(observableListTransaction);
         TableTransaction.refresh();
-    }}
+        TableType.setCellFactory(new Callback<>() {
+            @Override
+            public TableCell<Table, String> call(TableColumn<Table, String> param) {
+                return new TableCell<>() {
+                    @Override
+                    protected void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null && !empty) {
+                            setText(String.valueOf(item));
+                            setStyle("-fx-text-fill: blue;");
+                            setOnMouseClicked(event -> {
+                                Table rowData = getTableView().getItems().get(getIndex());
+                                if (rowData != null) {
+                                    observableListTransaction.add(rowData);
+                                    TableTransaction.refresh();
+                                }
+                            });
+                        } else {
+                            setText(null);
+                        }
+                    }
+                };
+            }
+        });
+    }
+}
