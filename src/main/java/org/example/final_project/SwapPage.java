@@ -45,7 +45,7 @@ public class SwapPage implements Initializable {
     private Label textFieldChangeToOutput;
 
     @FXML
-    private Label lblRefrencePrice; // Label for displaying the reference price
+    private Label lblRefrencePrice;
 
     @FXML
     private TextField textFieldSwapEntrance;
@@ -58,12 +58,8 @@ public class SwapPage implements Initializable {
         ChoiceBoxChangeTo.getItems().addAll(ChangeTo);
         ChoiceBoxSwap.getItems().addAll(Swap);
         ChoiceBoxRefrencePrice.getItems().addAll(refrencePrice);
-
-        // Add listener to ChoiceBoxRefrencePrice
         ChoiceBoxRefrencePrice.setOnAction(this::updateRefrencePrice);
     }
-
-    // Method to handle updating the reference price label
     public void updateRefrencePrice(ActionEvent event) {
         String selectedPrice = ChoiceBoxRefrencePrice.getValue();
         switch (selectedPrice) {

@@ -78,6 +78,7 @@ public class ExchangePage implements Initializable {
     private ObservableList<Table> observableListTable = TableDataSingleton.getInstance().getTableData();
     private ObservableList<Table> observableListTransaction = TableDataSingleton.getInstance().getTransactionData();
 
+
     @FXML
     void Buy(ActionEvent event) {
         try {
@@ -93,7 +94,7 @@ public class ExchangePage implements Initializable {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String currentDate = dateFormat.format(new Date());
                 String status = "pending";
-                Table historyItem = new Table(selectedMarket, amount, price, "Buy",status, currentDate);
+                Table historyItem = new Table(selectedMarket, amount, price, "Buy", status, currentDate);
                 HistoryPage.addToHistory(historyItem);
 
                 textFieldCurrency.clear();
@@ -107,6 +108,7 @@ public class ExchangePage implements Initializable {
             alert.showAndWait();
         }
     }
+
 
     @FXML
     void HomePage(ActionEvent event) throws IOException {
@@ -169,7 +171,6 @@ public class ExchangePage implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         TableMarket.setCellValueFactory(new PropertyValueFactory<>("tableMarketExchange"));
@@ -187,6 +188,7 @@ public class ExchangePage implements Initializable {
         Table.setItems(observableListTable);
         TableTransaction.setItems(observableListTransaction);
         TableTransaction.refresh();
+
         TableType.setCellFactory(new Callback<>() {
             @Override
             public TableCell<Table, String> call(TableColumn<Table, String> param) {
@@ -201,6 +203,8 @@ public class ExchangePage implements Initializable {
                                 Table rowData = getTableView().getItems().get(getIndex());
                                 if (rowData != null) {
                                     observableListTransaction.add(rowData);
+                                    int select = Table.getSelectionModel().getSelectedIndex();
+                                    HistoryPage.observableListTable.get(select).setTableStatus("acsept");
                                     TableTransaction.refresh();
                                 }
                             });
@@ -212,4 +216,6 @@ public class ExchangePage implements Initializable {
             }
         });
     }
+
 }
+

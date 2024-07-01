@@ -17,7 +17,7 @@
             </columns>
         </TableView>
       <Button fx:id="btnProfile" layoutX="555.0" layoutY="479.0" mnemonicParsing="false" onAction="#ProfilePage" prefHeight="46.0" prefWidth="129.0" style="-fx-background-radius: 0;" text="Profile" />
-      <Button layoutX="423.0" layoutY="480.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="132.0" style="-fx-background-radius: 0;" text="Button" />
+      <Button fx:id="btnTransfer" layoutX="423.0" layoutY="480.0" mnemonicParsing="false" onAction="#Transfer" prefHeight="45.0" prefWidth="132.0" style="-fx-background-radius: 0;" text="Transfer" />
       <Button layoutX="290.0" layoutY="480.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="132.8" style="-fx-background-radius: 0;" text="Button" />
       <Button layoutX="157.0" layoutY="480.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="132.8" style="-fx-background-radius: 0;" text="Button" />
       <Button layoutX="29.0" layoutY="480.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="132.8" style="-fx-background-radius: 0;" text="home" />

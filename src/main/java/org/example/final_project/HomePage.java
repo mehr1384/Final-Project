@@ -57,6 +57,20 @@ public class HomePage implements Initializable {
     private Button btnProfile;
 
     @FXML
+    private Button btnTransfer;
+
+    @FXML
+    void Transfer(ActionEvent event) throws IOException {
+        Stage stage = (Stage) btnTransfer.getScene().getWindow();
+        stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(ProfilePage.class.getResource("TransferPage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Transfer");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
     void ProfilePage(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnProfile.getScene().getWindow();
         stage.close();

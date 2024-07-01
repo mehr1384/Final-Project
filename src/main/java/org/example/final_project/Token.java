@@ -135,18 +135,22 @@ public class Token implements Initializable {
         startReadingChartData("C:\\Users\\asus\\IdeaProjects\\Final_Project\\src\\main\\resources\\imed\\currency_prices.csv");
         startUpdatingChartDataMinute();
     }
-
     @FXML
-    void month(ActionEvent event) {
-        if (timelineRead != null) {
-            timelineRead.stop();
-        }
+    void week(ActionEvent event) {
         if (timelineUpdate != null) {
             timelineUpdate.stop();
         }
         prepareDataQueue("C:\\Users\\asus\\IdeaProjects\\Final_Project\\src\\main\\resources\\imed\\currency_prices.csv");
 
-        startReadingChartData("C:\\Users\\asus\\IdeaProjects\\Final_Project\\src\\main\\resources\\imed\\currency_prices.csv");
+        startUpdatingChartDataWeek();
+    }
+
+    @FXML
+    void month(ActionEvent event) {
+        if (timelineUpdate != null) {
+            timelineUpdate.stop();
+        }
+        prepareDataQueue("C:\\Users\\asus\\IdeaProjects\\Final_Project\\src\\main\\resources\\imed\\currency_prices.csv");
         startUpdatingChartDataMonth();
     }
 
@@ -166,15 +170,10 @@ public class Token implements Initializable {
 
     @FXML
     void year(ActionEvent event) {
-        if (timelineRead != null) {
-            timelineRead.stop();
-        }
         if (timelineUpdate != null) {
             timelineUpdate.stop();
         }
         prepareDataQueue("C:\\Users\\asus\\IdeaProjects\\Final_Project\\src\\main\\resources\\imed\\currency_prices.csv");
-
-        startReadingChartData("C:\\Users\\asus\\IdeaProjects\\Final_Project\\src\\main\\resources\\imed\\currency_prices.csv");
         startUpdatingChartDataYear();
     }
 
@@ -261,9 +260,6 @@ public class Token implements Initializable {
         timelineUpdate.setCycleCount(Timeline.INDEFINITE);
         timelineUpdate.play();
     }
-
-    // Implement other startUpdatingChartData methods similarly
-
     private void startUpdatingChartDataHours() {
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         XYChart.getData().clear();
@@ -285,7 +281,6 @@ public class Token implements Initializable {
         }));
         timelineUpdate.setCycleCount(Timeline.INDEFINITE);
         timelineUpdate.play();
-        // Similar to startUpdatingChartDataMinute but for hours
     }
 
     private void startUpdatingChartDataDay() {
@@ -316,32 +311,38 @@ public class Token implements Initializable {
         XYChart.getData().clear();
         XYChart.getData().add(series);
 
-        timelineUpdate = new Timeline(new KeyFrame(Duration.hours(720), event -> {
-            // Clear old data
+        timelineUpdate = new Timeline(new KeyFrame(Duration.seconds(10), event -> {
             currentDataList.clear();
             series.getData().clear();
 
-            // Add new data
-            for (int i = 0; i < 43200; i++) {
+            List<Double> dataList = new ArrayList<>();
+            for (int i = 0; i < 24; i++) {  // 1 day * 24 hours
                 if (!dataQueue.isEmpty()) {
                     XYChart.Data<String, Number> data = dataQueue.poll();
                     currentDataList.add(data);
+                    dataList.add((Double) data.getYValue());
                     series.getData().add(data);
+                    System.out.println("Actual value for hour " + i + ": " + data.getYValue());
+                }
+            }
+
+            if (!dataList.isEmpty()) {
+                SimpleRegression regression = new SimpleRegression();
+                for (int i = 0; i < dataList.size(); i++) {
+                    regression.addData(i, dataList.get(i));
+                }
+
+                for (int i = 24; i < 24 + 29 * 24; i++) {  // Next 6 days * 24 hours
+                    double predictedValue = regression.predict(i);
+                    XYChart.Data<String, Number> predictedData = new XYChart.Data<>(String.valueOf(i), predictedValue);
+                    currentDataList.add(predictedData);
+                    series.getData().add(predictedData);
+                    System.out.println("Predicted value for hour " + i + ": " + predictedValue);
                 }
             }
         }));
         timelineUpdate.setCycleCount(Timeline.INDEFINITE);
         timelineUpdate.play();
-    }
-
-    @FXML
-    void week(ActionEvent event) {
-        if (timelineUpdate != null) {
-            timelineUpdate.stop();
-        }
-        prepareDataQueue("C:\\Users\\asus\\IdeaProjects\\Final_Project\\src\\main\\resources\\imed\\currency_prices.csv");
-
-        startUpdatingChartDataWeek();
     }
 
     private void prepareDataQueue(String filePath) {
@@ -416,15 +417,33 @@ public class Token implements Initializable {
         XYChart.getData().clear();
         XYChart.getData().add(series);
 
-        timelineUpdate = new Timeline(new KeyFrame(Duration.hours(8760), event -> {
+        timelineUpdate = new Timeline(new KeyFrame(Duration.seconds(10), event -> {
             currentDataList.clear();
             series.getData().clear();
 
-            for (int i = 0; i < 525600; i++) {
+            List<Double> dataList = new ArrayList<>();
+            for (int i = 0; i < 24; i++) {  // 1 day * 24 hours
                 if (!dataQueue.isEmpty()) {
                     XYChart.Data<String, Number> data = dataQueue.poll();
                     currentDataList.add(data);
+                    dataList.add((Double) data.getYValue());
                     series.getData().add(data);
+                    System.out.println("Actual value for hour " + i + ": " + data.getYValue());
+                }
+            }
+
+            if (!dataList.isEmpty()) {
+                SimpleRegression regression = new SimpleRegression();
+                for (int i = 0; i < dataList.size(); i++) {
+                    regression.addData(i, dataList.get(i));
+                }
+
+                for (int i = 24; i < 24 + 364 * 24; i++) {  // Next 6 days * 24 hours
+                    double predictedValue = regression.predict(i);
+                    XYChart.Data<String, Number> predictedData = new XYChart.Data<>(String.valueOf(i), predictedValue);
+                    currentDataList.add(predictedData);
+                    series.getData().add(predictedData);
+                    System.out.println("Predicted value for hour " + i + ": " + predictedValue);
                 }
             }
         }));

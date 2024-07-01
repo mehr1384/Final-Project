@@ -1,5 +1,4 @@
 package org.example.final_project;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,19 +10,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.regex.Pattern;
-
 public class ProfilePage {
-
     @FXML
     private Button btnEdit;
-
     @FXML
     private Button btnHistory;
-
     @FXML
     private Button btnPicture;
     @FXML
@@ -34,30 +28,22 @@ public class ProfilePage {
     private ImageView pictureView;
     @FXML
     private Label lblEmail;
-
     @FXML
     private Label lblName;
-
     @FXML
     private Label lblUsername;
     @FXML
     private Label lblPhone;
-
     @FXML
     private TextField textEmail;
-
     @FXML
     private TextField textFirstName;
-
     @FXML
     private TextField textLastName;
-
     @FXML
     private TextField textPassword;
-
     @FXML
     private TextField textPhone;
-
     @FXML
     public void initialize() {
         UserProfile userProfile = UserProfile.getInstance();
@@ -86,7 +72,6 @@ public class ProfilePage {
         stage.setScene(scene);
         stage.show();
     }
-
     @FXML
     void EditProfile(ActionEvent event) throws IOException {
         textEmail.setEditable(true);
@@ -121,9 +106,7 @@ public class ProfilePage {
         stage.setTitle("History Page");
         stage.setScene(scene);
         stage.show();
-
     }
-
     @FXML
     void Picture(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -135,17 +118,15 @@ public class ProfilePage {
             pictureView.setImage(image);
         }
     }
-
-
     @FXML
     boolean TextFieldEmail(ActionEvent event) {
         String regex = "^[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.com$";
         if (Pattern.matches(regex, textEmail.getText())) {
             return true;
-        }else{
-            return false;}
+        } else {
+            return false;
+        }
     }
-
     @FXML
     boolean TextFieldFirstName(ActionEvent event) {
         String regex = "^[a-zA-Z]{1,18}$";
@@ -164,7 +145,6 @@ public class ProfilePage {
             return false;
         }
     }
-
     @FXML
     boolean TextFieldPassword(ActionEvent event) {
         String regex = "^[a-zA-Z0-9]{8,12}$";
@@ -174,7 +154,6 @@ public class ProfilePage {
             return false;
         }
     }
-
     @FXML
     boolean TextFieldPhone(ActionEvent event) {
         String regex = "^09[0-9]{9}$";
@@ -193,99 +172,75 @@ public class ProfilePage {
         stage.setScene(scene);
         stage.show();
     }
-
     public Button getBtnEdit() {
         return btnEdit;
     }
-
     public void setBtnEdit(Button btnEdit) {
         this.btnEdit = btnEdit;
     }
-
     public Button getBtnHistory() {
         return btnHistory;
     }
-
     public void setBtnHistory(Button btnHistory) {
         this.btnHistory = btnHistory;
     }
-
     public Button getBtnPicture() {
         return btnPicture;
     }
-
     public void setBtnPicture(Button btnPicture) {
         this.btnPicture = btnPicture;
     }
-
     public Button getBtnWallet() {
         return btnWallet;
     }
-
     public void setBtnWallet(Button btnWallet) {
         this.btnWallet = btnWallet;
     }
-
     public Label getLblEmail() {
         return lblEmail;
     }
-
     public void setLblEmail(Label lblEmail) {
         this.lblEmail = lblEmail;
     }
-
     public Label getLblName() {
         return lblName;
     }
-
     public void setLblName(Label lblName) {
         this.lblName = lblName;
     }
-
     public Label getLblUsername() {
         return lblUsername;
     }
-
     public void setLblUsername(Label lblUsername) {
         this.lblUsername = lblUsername;
     }
-
     public TextField getTextEmail() {
         return textEmail;
     }
-
     public void setTextEmail(TextField textEmail) {
         this.textEmail = textEmail;
     }
-
     public TextField getTextFirstName() {
         return textFirstName;
     }
-
     public void setTextFirstName(TextField textFirstName) {
         this.textFirstName = textFirstName;
     }
-
     public TextField getTextLastName() {
         return textLastName;
     }
-
     public void setTextLastName(TextField textLastName) {
         this.textLastName = textLastName;
     }
-
     public TextField getTextPassword() {
         return textPassword;
     }
-
     public void setTextPassword(TextField textPassword) {
         this.textPassword = textPassword;
     }
-
     public TextField getTextPhone() {
         return textPhone;
     }
-
     public void setTextPhone(TextField textPhone) {
         this.textPhone = textPhone;
     }

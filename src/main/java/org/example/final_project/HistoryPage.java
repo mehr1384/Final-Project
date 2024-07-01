@@ -18,32 +18,23 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class HistoryPage implements Initializable {
-
     @FXML
     private TableView<Table> table;
-
     @FXML
     private TableColumn<Table, Double> tableAmount;
     @FXML
     private TableColumn<Table, String> tableStatus;
-
     @FXML
     private TableColumn<Table, String> tableDate;
-
     @FXML
     private TableColumn<Table, String> tableMarket;
-
     @FXML
     private TableColumn<Table, Double> tablePrice;
-
     @FXML
     private TableColumn<Table, String> tableType;
-
     @FXML
     private Button btnExport;
-
     public static ObservableList<Table> observableListTable = FXCollections.observableArrayList();
-
     @FXML
     void Export(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnExport.getScene().getWindow();
@@ -53,14 +44,8 @@ public class HistoryPage implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    public static void updateHistory(Table item, String status) {
-        for (Table tableItem : observableListTable) {
-            if (tableItem.equals(item)) {
-                tableItem.setTableStatus(status);
-                break;
-            }
-        }
-    }
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tableMarket.setCellValueFactory(new PropertyValueFactory<>("tableMarketHistory"));
@@ -72,7 +57,6 @@ public class HistoryPage implements Initializable {
 
         table.setItems(observableListTable);
     }
-
     public static void addToHistory(Table item) {
         observableListTable.add(item);
     }
